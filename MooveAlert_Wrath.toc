@@ -1,0 +1,30 @@
+## Interface: 30405, 38001, 38002
+## Title: MooveAlert
+## Notes: Alerte sol/zone dangereuse - moteur unique, flash + son, profils par personnage.
+## Author: Ludovic Dormoy
+## Version: 1.0.0
+## SavedVariables: MooveAlertDB
+## SavedVariablesPerCharacter: MooveAlertCharDB
+## Category: Combat
+## IconTexture: Interface\Icons\spell_fire_fire
+
+Core.lua
+Locale\enUS.lua
+Locale\frFR.lua
+Locale\esES.lua
+Locale\esMX.lua
+Locale\deDE.lua
+Locale\itIT.lua
+Locale\ptBR.lua
+Locale\ruRU.lua
+Locale\koKR.lua
+Locale\zhCN.lua
+Locale\zhTW.lua
+Alerts.lua
+Detect.lua
+Options.lua
+Data\IgnoreScan.lua
+Data\Spells_GenericClassic.lua
+Data\Spells_Classic.lua
+Data\Spells_BC.lua
+Data\Spells_Wrath.lua
