@@ -46,3 +46,6 @@ L.OPT_HAZARD_LAVA = "熔岩 / 篝火警报"
 L.HAZARD_FATIGUE_NAME = "疲劳"
 L.HAZARD_DROWNING_NAME = "溺水"
 L.HAZARD_LAVA_NAME = "熔岩"
+
+L.MSG_NO_COMBATLOG_SOUND = "客户端无战斗记录：仅对施加光环的法术提供声音提醒。"
+L.MSG_NO_COMBATLOG_NONE = "客户端无战斗记录也无光环 API：无法检测。"

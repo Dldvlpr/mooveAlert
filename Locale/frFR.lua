@@ -45,3 +45,6 @@ L.OPT_HAZARD_LAVA = "Alerte lave / feu de camp"
 L.HAZARD_FATIGUE_NAME = "Fatigue"
 L.HAZARD_DROWNING_NAME = "Noyade"
 L.HAZARD_LAVA_NAME = "Lave"
+
+L.MSG_NO_COMBATLOG_SOUND = "client sans journal de combat : alerte sonore seulement, sur les sorts qui posent une aura."
+L.MSG_NO_COMBATLOG_NONE = "client sans journal de combat ni API d'aura : aucune détection possible."

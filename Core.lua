@@ -121,6 +121,7 @@ SlashCmdList["MOOVEALERT"] = function(msg)
     elseif cmd == "sound" then
         MooveAlertDB.soundEnabled = (arg:lower() == "on")
         Print(string.format(L.MSG_SOUND, MooveAlertDB.soundEnabled and L.WORD_ON or L.WORD_OFF))
+        if MooveAlert.RegisterAuraSounds then MooveAlert:RegisterAuraSounds() end
     elseif cmd == "flash" then
         MooveAlertDB.flashEnabled = (arg:lower() == "on")
         Print(string.format(L.MSG_FLASH, MooveAlertDB.flashEnabled and L.WORD_ON or L.WORD_OFF))
@@ -135,12 +136,14 @@ SlashCmdList["MOOVEALERT"] = function(msg)
         if id then
             MooveAlertCharDB.mutedSpells[id] = true
             Print(string.format(L.MSG_MUTED, id))
+            if MooveAlert.RegisterAuraSounds then MooveAlert:RegisterAuraSounds() end
         end
     elseif cmd == "unmute" then
         local id = tonumber(arg)
         if id then
             MooveAlertCharDB.mutedSpells[id] = nil
             Print(string.format(L.MSG_UNMUTED, id))
+            if MooveAlert.RegisterAuraSounds then MooveAlert:RegisterAuraSounds() end
         end
     elseif cmd == "scan" then
         MooveAlertDB.scanMode = not MooveAlertDB.scanMode

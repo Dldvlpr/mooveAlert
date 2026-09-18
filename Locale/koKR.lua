@@ -46,3 +46,6 @@ L.OPT_HAZARD_LAVA = "용암 / 모닥불 경고"
 L.HAZARD_FATIGUE_NAME = "피로"
 L.HAZARD_DROWNING_NAME = "익사"
 L.HAZARD_LAVA_NAME = "용암"
+
+L.MSG_NO_COMBATLOG_SOUND = "전투 기록이 없는 클라이언트: 오라를 거는 주문에 대해 소리 알림만 제공합니다."
+L.MSG_NO_COMBATLOG_NONE = "전투 기록도 오라 API도 없는 클라이언트: 감지가 불가능합니다."

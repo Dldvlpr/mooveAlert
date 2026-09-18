@@ -45,3 +45,6 @@ L.OPT_HAZARD_LAVA = "Allarme lava / falò"
 L.HAZARD_FATIGUE_NAME = "Affaticamento"
 L.HAZARD_DROWNING_NAME = "Annegamento"
 L.HAZARD_LAVA_NAME = "Lava"
+
+L.MSG_NO_COMBATLOG_SOUND = "client senza registro di combattimento: solo avviso sonoro, sugli incantesimi che applicano un'aura."
+L.MSG_NO_COMBATLOG_NONE = "client senza registro di combattimento né API delle aure: nessun rilevamento possibile."

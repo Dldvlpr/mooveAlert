@@ -45,3 +45,6 @@ L.OPT_HAZARD_LAVA = "Alerta de lava / fogueira"
 L.HAZARD_FATIGUE_NAME = "Fadiga"
 L.HAZARD_DROWNING_NAME = "Afogamento"
 L.HAZARD_LAVA_NAME = "Lava"
+
+L.MSG_NO_COMBATLOG_SOUND = "cliente sem registro de combate: apenas alerta sonoro, em feitiços que aplicam uma aura."
+L.MSG_NO_COMBATLOG_NONE = "cliente sem registro de combate nem API de auras: nenhuma detecção possível."

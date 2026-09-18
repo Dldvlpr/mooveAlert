@@ -45,3 +45,6 @@ L.OPT_HAZARD_LAVA = "Lava-/Lagerfeuerwarnung"
 L.HAZARD_FATIGUE_NAME = "Erschöpfung"
 L.HAZARD_DROWNING_NAME = "Ertrinken"
 L.HAZARD_LAVA_NAME = "Lava"
+
+L.MSG_NO_COMBATLOG_SOUND = "Client ohne Kampfprotokoll: nur Tonwarnung bei Zaubern, die eine Aura anlegen."
+L.MSG_NO_COMBATLOG_NONE = "Client ohne Kampfprotokoll und Aura-API: keine Erkennung möglich."

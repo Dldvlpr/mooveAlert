@@ -46,3 +46,6 @@ L.OPT_HAZARD_LAVA = "Оповещение о лаве / костре"
 L.HAZARD_FATIGUE_NAME = "Усталость"
 L.HAZARD_DROWNING_NAME = "Утопление"
 L.HAZARD_LAVA_NAME = "Лава"
+
+L.MSG_NO_COMBATLOG_SOUND = "клиент без журнала боя: только звуковое оповещение по заклинаниям, накладывающим ауру."
+L.MSG_NO_COMBATLOG_NONE = "клиент без журнала боя и API аур: обнаружение невозможно."

@@ -48,3 +48,6 @@ MooveAlert.L = {
     HAZARD_DROWNING_NAME = "Drowning",
     HAZARD_LAVA_NAME = "Lava",
 }
+
+MooveAlert.L.MSG_NO_COMBATLOG_SOUND = "client without combat log: sound alert only, on spells that apply an aura."
+MooveAlert.L.MSG_NO_COMBATLOG_NONE = "client without combat log or aura API: no detection possible."

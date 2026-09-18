@@ -16,9 +16,42 @@
 local THROTTLE_SECONDS = 3
 local lastFired = {}
 
+-- Moteur 12.x (Midnight, WoW Forever 1.60) : COMBAT_LOG_EVENT_UNFILTERED est interdit aux addons,
+-- même sous pcall (popup ADDON_ACTION_FORBIDDEN), et les auras du joueur sont secrètes en combat
+-- (UNIT_AURA inexploitable). Seul repli : demander au client de jouer lui-même un son quand un
+-- sort de la liste pose une aura sur le joueur (C_UnitAuras.AddPrivateAuraAppliedSound, comme GTFO).
+-- Son uniquement : pas de flash, pas de dégâts sans aura, pas de lave/fatigue/noyade.
+local HAS_COMBAT_LOG = not (C_DamageMeter or issecretvalue or (C_CombatLog and C_CombatLog.SetFilteredEventsEnabled))
+local RAID_WARNING_FILE_ID = 567397   -- Sound\Interface\RaidWarning.ogg
+
 local frame = CreateFrame("Frame")
-frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 frame:RegisterEvent("PLAYER_LOGIN")
+if HAS_COMBAT_LOG then
+    frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+end
+
+local AddAuraSound = C_UnitAuras and (C_UnitAuras.AddAuraAppliedSound or C_UnitAuras.AddPrivateAuraAppliedSound)
+local RemoveAuraSound = C_UnitAuras and (C_UnitAuras.RemoveAuraAppliedSound or C_UnitAuras.RemovePrivateAuraAppliedSound)
+local auraSoundIDs = {}
+
+-- (Ré)enregistre un son client par sort connu, sauf sorts coupés et sévérité 0.
+function MooveAlert:RegisterAuraSounds()
+    if HAS_COMBAT_LOG or not AddAuraSound then return end
+    for _, id in ipairs(auraSoundIDs) do
+        if RemoveAuraSound then pcall(RemoveAuraSound, id) end
+    end
+    wipe(auraSoundIDs)
+    if not MooveAlertDB.soundEnabled then return end
+    for spellID, data in pairs(self.Spells) do
+        if (data.sound or 2) > 0 and not self.IsMuted(spellID) then
+            local ok, id = pcall(AddAuraSound, {
+                spellID = spellID, unitToken = "player",
+                soundFileID = RAID_WARNING_FILE_ID, outputChannel = "Master",
+            })
+            if ok and id then auraSoundIDs[#auraSoundIDs + 1] = id end
+        end
+    end
+end
 
 local playerGUID
 
@@ -99,6 +132,12 @@ end
 frame:SetScript("OnEvent", function(self, event)
     if event == "PLAYER_LOGIN" then
         playerGUID = UnitGUID("player")
+        MooveAlert:RegisterAuraSounds()
+        -- Message d'information une seule fois par compte, pas à chaque connexion.
+        if not HAS_COMBAT_LOG and not MooveAlertDB.noCombatLogNoticeShown then
+            MooveAlertDB.noCombatLogNoticeShown = true
+            MooveAlert.Print(AddAuraSound and MooveAlert.L.MSG_NO_COMBATLOG_SOUND or MooveAlert.L.MSG_NO_COMBATLOG_NONE)
+        end
     elseif event == "COMBAT_LOG_EVENT_UNFILTERED" then
         OnCombatLogEvent()
     end
