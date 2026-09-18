@@ -1,7 +1,6 @@
 ## Interface: 50504
 ## Title: MooveAlert
 ## Notes: Alerte sol/zone dangereuse - moteur unique, flash + son, profils par personnage.
-## Author: Ludovic Dormoy
 ## Version: 1.0.0
 ## SavedVariables: MooveAlertDB
 ## SavedVariablesPerCharacter: MooveAlertCharDB
